@@ -1,13 +1,15 @@
 {
 	"name": "sprint_1",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"dev": "parcel index.html",
-		"build": "parcel build index.html"
+	"targets": {
+		"default": {
+			"distDir": "./build"
+		}
 	},
-	"keywords": [],
+	"scripts": {
+		"dev": "parcel public/index.html",
+		"build": "parcel build public/index.html"
+	},
 	"author": "Aleksei Tyumentsev",
 	"license": "ISC",
 	"devDependencies": {
