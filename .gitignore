@@ -1,4 +1,8 @@
-build
+dist
 node_modules
+src
+static
 .idea
 .parcel-cache
+package-lock.json
+package.json
