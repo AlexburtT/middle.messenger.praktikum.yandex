@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"dev": "parcel src/index.pug",
-		"build": "parcel build public/index.html"
+		"build": "parcel build src/index.pug"
 	},
 	"author": "Aleksei Tyumentsev",
 	"license": "ISC",
