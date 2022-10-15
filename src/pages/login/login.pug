@@ -1,0 +1,9 @@
+extends ../../layout/page
+include ../../components/loginForm.pug
+
+block content
+	h1 Страница входа с формой входа
+	+loginForm('Логин', 'Логин')(name='login', id='login', type='text', for='login')
+	+loginForm('Пароль', 'Пароль')(name='password', id='password', type='password', for='password')
+	a(href="../chats/chats.pug") Войти
+	a(href="../register/register.pug") Ещё не зарегистрированы?

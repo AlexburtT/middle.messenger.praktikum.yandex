@@ -1,0 +1,11 @@
+:root {
+	--darkRed: #8C0D17;
+	--darkGrey: #496373;
+	--lightGrey: #D8E8F2;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
