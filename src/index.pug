@@ -1,8 +1,9 @@
 extends ./layout/main
 block content
 	body
-		img(src="./public/logo.png", alt="логотип")
+		img.logo(src="./public/logo.png", alt="логотип")
 		h1 RocetSend
 		#root
-		h2 Мы Вас приветствуем! 
-		a(href="./pages/login/login.pug") Начнём?
+		h3 Мы приветствуем Вас!
+		button
+			a(href="./pages/login/login.pug") Начнём?
