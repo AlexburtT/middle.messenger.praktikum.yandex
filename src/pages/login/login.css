@@ -1,0 +1,83 @@
+.formData {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--white);
+	width: 300px;
+	padding: 20px;
+	border-radius: 30px;
+	box-shadow: 0 15px 25px rgba(51, 51, 51, 0.6);
+}
+
+.formData:hover {
+	opacity: 0.97;
+}
+
+fieldset {
+	padding: 20px;
+	border: 1px solid var(--lightGrey);
+	border-radius: 30px;
+
+}
+
+legend {
+	padding-left: 5px;
+	padding-right: 5px;
+	color: var(--lightGrey);
+	text-align: center;
+}
+
+.formData h2 {
+	margin: 0 0 20px;
+	padding: 0;
+	color: var(--darkRed);
+	text-align: center;
+}
+
+.inputContainer {
+	position: relative;
+}
+
+.inputContainer .input {
+	width: 100%;
+	padding: 10px 0;
+	font-size: 16px;
+	color: var(--darkGrey);
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: 1px solid var(--lightGrey);
+	outline: none;
+	background: transparent;
+}
+
+.inputContainer .label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px 0;
+	font-size: 16px;
+	color: var(--darkRed);
+	pointer-events: none;
+	transition: .5s;
+}
+
+.inputContainer .input:focus~label,
+.inputContainer .input:valid~label {
+	top: -20px;
+	left: 0;
+	font-size: 12px;
+}
+
+.inputContainer .input:focus,
+.inputContainer .input:valid {
+	border-bottom: 1px solid var(--darkRed);
+}
+
+.formData>a {
+	color: var(--darkGrey);
+	text-align: center;
+	padding-top: 15px;
+}
+
+.formData>a:hover {
+	color: var(--darkRed);
+}

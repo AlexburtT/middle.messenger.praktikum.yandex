@@ -1,0 +1,16 @@
+include ./mixin/inputConteiner.pug
+
+block content
+	section.formData
+		h2 RocetSend
+		form(action="", method="")
+			fieldset
+				legend Регистрация
+				+inputConteiner('Имя')(name='first_name', type='text', required, inputmode='text')
+				+inputConteiner('Фамилия')(name='second_name', type='text', required)
+				+inputConteiner('Логин')(name='login', type='text', required)
+				+inputConteiner('E-mail')(name='email', type='email', required)
+				+inputConteiner('Пароль')(name='password', type='password', required)
+				+inputConteiner('Телефон')(name='phone', type='tel', required, inputmode='numeric')
+				button(type="")
+					a(href="../chats/chats.pug") Создать аккаунт

@@ -1,0 +1,6 @@
+.logo_error {
+	width: 23vmin;
+	height: auto;
+	padding-top: 5vh;
+	filter: invert(20%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(80%);
+}

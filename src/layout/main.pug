@@ -5,6 +5,9 @@ html(lang="ru")
 		title= "RocetSend"
 		link(rel="stylesheet", href="./public/main.css")
 		link(rel="shortcut icon", href="./public/favicon.png", type="image/png")
-		script(src="/src/index.js" type="module")
+
 	body
-		block content
+		main
+			block content
+		block scripts
+			script(src="./index.js", type="module")

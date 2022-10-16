@@ -1,0 +1,13 @@
+mixin liSendChat(a, nameUser, sendUser, timeUser, num)
+
+	nav.chatUser
+		div.chatAvaUser
+			p.avatarUser=a
+		div.nameUser
+			h3=nameUser
+			p=sendUser
+		div.storyUser
+			time=timeUser
+			if(num != 0)
+				div.alertUser
+					p=num
