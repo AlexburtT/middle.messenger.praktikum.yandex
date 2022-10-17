@@ -1,0 +1,49 @@
+block content
+
+	section.profileData
+
+		div.sectionAvatar
+			div.fotoUser
+				input.fotoUserInput(id="avatarInput" type="file" name="avatar" multiple)
+				label.fotoUserLabel(for="avatarInput") ФОТО
+			h2 Иван Иванов
+
+		div.profileDataSection
+			fieldset.formBorder
+				legend Личные данные
+				form.formUser
+					div.rowProfile
+						p(name="email") Почта 
+							p pochta@yandex.ru
+					div.rowProfile
+						p(name="login") Логин
+							p ivanivanov
+					div.rowProfile
+						p(name="first_name") Имя
+							p Иван
+					div.rowProfile
+						p(name="second_name") Фамилия
+							p Иванов
+					div.rowProfile
+						p(name="display_name") Имя в чате
+							p Иван
+					div.rowProfile
+						p(name="phone") Телефон
+							p +7 (909) 967 30 30
+					div.btnGroup
+						a.editBtn(href="#") Изменить
+			fieldset.activFormBorder
+				legend.activFormName Изменить пароль
+				form.formPassword
+					div.rowProfile
+						p(name="oldPassword") Старый пароль 
+							p ********
+					div.rowProfile
+						p(name="newPassword") Новый пароль
+							p **********
+					div.rowProfile
+						p(name="newPassword") Повторите новый пароль
+							p **********
+				div.btnGroup
+					a.cancelBtn(href="#") Отменить
+					a.saveBtn(href="#") Сохранить
