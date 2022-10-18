@@ -1,0 +1,32 @@
+{
+	"name": "sprint_1",
+	"version": "1.0.0",
+	"targets": {
+		"default": {
+			"distDir": "./build"
+		}
+	},
+	"scripts": {
+		"dev": "parcel src/index.pug",
+		"build": "parcel build src/index.pug",
+		"start": "node ./server.js"
+	},
+	"author": "Aleksei Tyumentsev",
+	"license": "ISC",
+	"devDependencies": {
+		"@parcel/optimizer-data-url": "^2.7.0",
+		"@parcel/transformer-inline-string": "^2.7.0",
+		"@parcel/transformer-pug": "^2.7.0",
+		"express": "^4.18.2",
+		"parcel": "^2.7.0",
+		"postcss": "^8.4.18"
+	},
+	"dependencies": {
+		"postcss-url": "^10.1.3"
+	},
+	"@parcel/transformer-css": {
+		"drafts": {
+			"nesting": true
+		}
+	}
+}

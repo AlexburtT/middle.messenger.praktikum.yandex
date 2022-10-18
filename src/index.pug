@@ -1,0 +1,12 @@
+extends ./layout/main
+block content
+	body
+		img.logo(src="./public/logo.png", alt="логотип")
+		h1 RocetSend
+		#root
+		h3 Мы приветствуем Вас!
+		button
+			a(href="./pages/login/login.pug") Начнём?
+		div.linkPage
+			a(href="./pages/404/404.pug") 404
+			a(href="./pages/500/500.pug") 500

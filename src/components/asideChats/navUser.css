@@ -1,0 +1,43 @@
+.navUser {
+	display: flex;
+	background-color: var(--lightGrey);
+	width: 100%;
+	height: auto;
+	border-bottom: solid 1px var(--darkGrey);
+	align-items: center;
+}
+
+.navAvaUser {
+	width: 50px;
+	height: 50px;
+	background-color: var(--darkGrey);
+	border-radius: 50%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 10px;
+}
+
+.avatarUser {
+	color: var(--white);
+	text-align: center;
+}
+
+.searchChat {
+	padding: 7px;
+	margin-left: 15px;
+	margin-right: 15px;
+	border-radius: 15px;
+	border-bottom: 1px solid var(--lightGrey);
+	outline: none;
+}
+
+.searchChat::placeholder {
+	text-align: center;
+	color: var(--lightGrey);
+}
+
+.searchChat:focus,
+.searchChat:active {
+	border: 1px solid var(--darkRed);
+}
