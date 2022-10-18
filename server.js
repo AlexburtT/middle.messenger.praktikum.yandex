@@ -11,6 +11,6 @@ app.get('/', (req, res) => {
 	res.sendFile(`${__dirname}/build/index.html`);
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
 	console.log(`Example app listening on port ${PORT}!`);
 }); 
