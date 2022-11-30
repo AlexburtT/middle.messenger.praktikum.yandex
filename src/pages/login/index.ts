@@ -7,7 +7,7 @@ import { renderDOM } from '../../utills/renderDOM';
 import { RegisterPage } from '../Register';
 import Validations from '../../utills/validations';
 import styles from './login.css';
-import { ChatsPage } from '../Chats';
+import { ChatsPage } from '../chats';
 
 export class LoginPage extends Block {
 	constructor() {

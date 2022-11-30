@@ -3,6 +3,9 @@ import template from './navChats.hbs';
 import styles from './navChats.css';
 import { Input } from '../Input/input';
 import { ItemsChat } from './itemsChat';
+import { Link } from '../Link';
+import { ProfilePage } from '../../pages/Profile';
+import { renderDOM } from '../../utills/renderDOM';
 
 export class NavChatsBlock extends Block {
 	constructor() {
@@ -27,12 +30,17 @@ export class NavChatsBlock extends Block {
 
 		this.children.itemsChatUser = itemsChatUser;
 
-		// this.children.itemsChatUser = new ItemsChat({
-		// 	name: 'Илья',
-		// 	lastMessage: 'Друзья, у меня для вас особенный выпуск новостей!...',
-		// 	lastTime: '15:12',
-		// 	alertMsg: 3,
-		// });
+		this.children.linkProfile = new Link({
+			label: 'АВ',
+			route: '#/profile',
+			className: 'linkAvatarUser',
+			events: {
+				click: () => {
+					const profilePage = new ProfilePage();
+					renderDOM('#app', profilePage);
+				},
+			},
+		});
 	}
 
 	render() {
@@ -46,19 +54,19 @@ const chats = {
 			name: 'Илья',
 			lastMessage: 'Друзья, у меня для вас особенный выпуск новостей!...',
 			lastTime: '15:12',
-			alertMsg: '3',
+			alertMsg: 3,
 		},
 		{
 			name: 'тет-а-теты',
 			lastMessage: 'И Human Interface Guidelines и Material Design рекомендуют...',
 			lastTime: 'ср',
-			alertMsg: '0',
+			alertMsg: 0,
 		},
 		{
 			name: 'Design Destroyer',
 			lastMessage: 'В 2008 году художник Jon Rafman начал собирать...',
 			lastTime: '5:12',
-			alertMsg: '0',
+			alertMsg: 0,
 		},
 	],
 };
