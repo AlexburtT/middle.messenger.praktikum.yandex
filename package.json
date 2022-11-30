@@ -7,26 +7,25 @@
 		}
 	},
 	"scripts": {
-		"dev": "parcel src/index.pug",
-		"build": "parcel build src/index.pug",
-		"start": "node ./server.js"
+		"dev": "parcel src/index.html --no-cache",
+		"build": "parcel build src/index.html",
+		"start": "parcel build src/index.html && node ./server.js"
 	},
 	"author": "Aleksei Tyumentsev",
 	"license": "ISC",
 	"devDependencies": {
-		"@parcel/optimizer-data-url": "2.7.0",
-		"@parcel/transformer-inline-string": "2.7.0",
-		"@parcel/transformer-pug": "2.7.0",
-		"express": "4.18.2",
+		"@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+		"eslint": "8.26.0",
+		"eslint-config-airbnb": "19.0.4",
+		"eslint-config-airbnb-typescript": "17.0.0",
 		"parcel": "2.7.0",
-		"postcss": "8.4.18"
+		"express": "4.18.2",
+		"postcss": "8.4.19",
+		"postcss-nested": "6.0.0",
+		"stylelint": "14.14.0"
 	},
 	"dependencies": {
-		"postcss-url": "10.1.3"
-	},
-	"@parcel/transformer-css": {
-		"drafts": {
-			"nesting": true
-		}
+		"handlebars": "4.7.7",
+		"nanoid": "4.0.0"
 	}
 }

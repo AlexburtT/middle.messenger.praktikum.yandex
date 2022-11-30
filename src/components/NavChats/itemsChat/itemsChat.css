@@ -1,0 +1,65 @@
+.userNavChat {
+    display: grid;
+    grid-template-columns: 20% auto 15%;
+    background-color: var(--white);
+    width: 100%;
+    height: auto;
+    border-bottom: solid 1px var(--lightGrey);
+    align-items: center;
+    justify-items: start;
+    &:hover {
+         opacity: 0.90;
+     }
+}
+
+.avatarUser {
+    width: 40px;
+    height: 40px;
+    background-color: var(--lightGrey);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+}
+.nameUserChatStory {
+    display: flex;
+    flex-direction: column;
+    color: var(--darkGrey);
+    padding-left: 10px;
+}
+
+.nameUser {
+    padding-bottom: 3px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.lastMessage {
+    font-size: 13px;
+    font-weight: 200;
+}
+
+.timeUserAlert {
+    display: flex;
+    flex-direction: column;
+    color: var(--lightGrey);
+    font-weight: 200;
+    font-size: 12px;
+    align-items: center;
+}
+
+.lastTime {
+    padding-bottom: 10px;
+}
+
+.alertUser {
+    color: var(--white);
+    width: 20px;
+    height: 20px;
+    background-color: var(--darkRed);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

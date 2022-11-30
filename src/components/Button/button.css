@@ -1,0 +1,15 @@
+.button {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: white;
+    border-style: none;
+    padding: 10px;
+    background-color: var(--darkRed);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(51, 51, 51, 0.6);
+    transition: transform .2s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}

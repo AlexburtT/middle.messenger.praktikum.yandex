@@ -1,0 +1,31 @@
+.asideNavChats {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    min-height: 100%;
+    width: 100%;
+    border-right: 1px solid var(--lightGrey);
+    align-items: center;
+}
+.headerNavChats {}
+
+.inputSearchUser {
+    padding: 7px;
+    border-radius: 15px;
+    border: 1px solid var(--lightGrey);
+    outline: none;
+    width: 90%;
+
+    &::placeholder {
+         text-align: center;
+         color: var(--lightGrey);
+    }
+
+    &:focus,
+    &:active {
+         border: 1px solid var(--darkRed);
+     }
+}
+
+.navChats {}
+.childNavChats {}

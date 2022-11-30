@@ -1,0 +1,23 @@
+.input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    text-align: center;
+    color: var(--darkGrey);
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid var(--lightGrey);
+    outline: none;
+    background: transparent;
+}
+
+.input:focus,
+.input:valid {
+    border-bottom: 1px solid var(--darkRed);
+}
+
+.input:invalid {
+    border-bottom: 1px solid var(--danger);
+}
+
+
