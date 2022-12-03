@@ -4,14 +4,12 @@ import styles from './input.css';
 
 
 interface InputProps {
-	id: string;
 	type: string;
-	placeholder?: string;
 	inputName: string;
-	className: string;
+	placeholder?: string;
 	required: boolean;
-	autocomplete?: boolean;
 	autofocus?: boolean;
+	className: string;
 	minLength?: number;
 	maxLength?: number;
 	events?: any;

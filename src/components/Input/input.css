@@ -1,23 +1,24 @@
 .input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    text-align: center;
-    color: var(--darkGrey);
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid var(--lightGrey);
-    outline: none;
-    background: transparent;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  text-align: center;
+  color: var(--darkGrey);
+  margin-bottom: 5px;
+  margin-top: 10px;
+  border: none;
+  border-bottom: 1px solid var(--lightGrey);
+  outline: none;
+  background: transparent;
 }
 
-.input:focus,
+.input:focus {
+  border-bottom: 1px solid var(--darkRed);
+}
 .input:valid {
-    border-bottom: 1px solid var(--darkRed);
+  border-bottom: 1px solid var(--valid);
 }
 
 .input:invalid {
-    border-bottom: 1px solid var(--danger);
+  border-bottom: 1px solid var(--danger);
 }
-
-

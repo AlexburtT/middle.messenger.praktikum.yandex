@@ -5,9 +5,7 @@ import styles from './button.css';
 interface ButtonProps {
 	type?: string;
   label: string;
-  events?: {
-    click: () => void;
-  }
+  events?: any;
 }
 
 export class Button extends Block {

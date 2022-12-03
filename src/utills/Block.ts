@@ -1,19 +1,19 @@
 import { nanoid } from 'nanoid';
 import { EventBus } from './EventBus';
 
-class Block {
+class Block<Props extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
-  };
+  } as const;
 
   public id = nanoid(6);
 
 	private _element: HTMLElement | null = null;
-  protected props: any;
-	public children: Record<string, Block>;
+  protected props: object;
+	public children: Record<string, Block | Block[]>;
 	private eventBus: () => EventBus;
 
   /** JSDoc
@@ -23,20 +23,31 @@ class Block {
 	 * @returns {void}
 	 */
 
-  constructor(propsAndChildren: any = {}) {
+  constructor(propsAndChildren: Props) {
     const eventBus = new EventBus();
     const { props, children } = this._getChildren(propsAndChildren);
 		this.children = children;
     this.props = this._makePropsProxy(props);
-		//this.initChildren();
     this.eventBus = () => eventBus;
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildren(childrenAndProps: any) {
-    const props: any = {};
-    const children: any = {};
+	private _render() {
+		const fragment = this.render();
+		this._removeEvents();
+		const newElement = fragment.firstElementChild as HTMLElement;
+		if (this._element && newElement) {
+			this._element.replaceWith(newElement);
+		}
+		this._element = newElement;
+		this._addEvents();
+	}
+
+  _getChildren(childrenAndProps: Props):
+		{ props: Props, children: Record<string, Block | Block[]> } {
+    const props: Record<string, unknown> = {};
+    const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -45,17 +56,29 @@ class Block {
         props[key] = value;
       }
     });
-    return { props, children };
+    return { props: props as Props, children };
   }
 
 	_addEvents() {
-		const events: Record<string, () => void> = (this.props as any).events;
+		const events: Record<string, () => void> = (this.props as Props).events;
 		if (!events) {
 			return;
 		}
 
 		Object.entries(events).forEach(([event, listener]) => {
 			this._element?.addEventListener(event, listener);
+		});
+	}
+
+	_removeEvents() {
+		const events: Record<string, () => void> = (this.props as Props).events;
+
+		if (!events || !this._element) {
+			return;
+		}
+
+		Object.entries(events).forEach(([event, listener]) => {
+			this._element!.removeEventListener(event, listener);
 		});
 	}
 
@@ -91,18 +114,18 @@ class Block {
 		});
 	}
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (response) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate(oldProps: Props, newProps: Props) {
     return true;
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Partial<Props>) => {
     if (!nextProps) {
       return;
     }
@@ -111,16 +134,6 @@ class Block {
 
   get element() {
     return this._element;
-  }
-
-  private _render() {
-    const fragment = this.render();
-    const newElement = fragment.firstElementChild as HTMLElement;
-		if (this._element && newElement) {
-			this._element.replaceWith(newElement);
-		}
-    this._element = newElement;
-    this._addEvents();
   }
 
   protected compile(template: (context: any) => string, context: any) {
@@ -167,7 +180,7 @@ class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props as unknown as object, {

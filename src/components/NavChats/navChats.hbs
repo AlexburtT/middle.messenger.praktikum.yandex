@@ -8,7 +8,9 @@
 
 	<nav class="navChats">
 		<div class="childNavChats">
-			{{{itemsChatUser}}}
+			{{#each itemsChatUser}}
+				{{{this}}}
+			{{/each}}
 		</div>
 	</nav>
 </aside>

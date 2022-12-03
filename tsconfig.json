@@ -15,6 +15,11 @@
     "noUnusedParameters": true,
     "strictNullChecks": true
   },
+  "@parcel/transformer-css": {
+    "drafts": {
+      "nesting": true
+    }
+  },
   "lib": [
     "ESNext",
     "DOM"

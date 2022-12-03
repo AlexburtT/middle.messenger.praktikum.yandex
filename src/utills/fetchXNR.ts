@@ -13,19 +13,19 @@ type RequestOptions = {
 	data?: any;
 };
 
-type OptionsWithoutMethod = (url: string, options?: RequestOptions) => Promise<unknown>;
+type HTTPMethod = (url: string, options?: RequestOptions) => Promise<unknown>;
 
 export class HTTPTransport {
-	get: OptionsWithoutMethod = (url, options = {}) =>
+	get: HTTPMethod = (url, options = {}) =>
 		this.request(url, { ...options, method: Method.GET });
 
-	post: OptionsWithoutMethod = (url, options = {}) =>
+	post: HTTPMethod = (url, options = {}) =>
 		this.request(url, { ...options, method: Method.POST });
 
-	put: OptionsWithoutMethod = (url, options = {}) =>
+	put: HTTPMethod = (url, options = {}) =>
 		this.request(url, { ...options, method: Method.PUT });
 
-	delete: OptionsWithoutMethod = (url, options = {}) =>
+	delete: HTTPMethod = (url, options = {}) =>
 		this.request(url, { ...options, method: Method.DELETE });
 
 	request = (url: string, options: RequestOptions = {}) => {
