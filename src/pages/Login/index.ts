@@ -17,6 +17,7 @@ export class LoginPage extends Block {
 		this.children.button = new Button({
 			type: 'submit',
 			label: 'Войти',
+			className: 'button',
 			events: {
 				click: onSubmit,
 				},
@@ -57,7 +58,6 @@ export class LoginPage extends Block {
 				click: () => {
 					const registerPage = new RegisterPage();
 					renderDOM('#app', registerPage);
-					console.log('ссылка');
 				},
 			},
 		});

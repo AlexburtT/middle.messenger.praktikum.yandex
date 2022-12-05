@@ -1,3 +1,6 @@
+import { renderDOM } from './renderDOM';
+import { ChatsPage } from '../pages/chats';
+
 class Validations {
 	public static INPUTS: Record<string,
 		{
@@ -35,6 +38,11 @@ class Validations {
 			errorMsg: 'латиница или кириллица, первая буква должна быть заглавной, ' +
 				'без пробелов и без цифр, нет спецсимволов (допустим только дефис)',
 		},
+		chat_name: {
+			pattern: /^[А-ЯЁA-Z][А-ЯЁA-Zа-яёa-z-]+$/,
+			errorMsg: 'латиница или кириллица, первая буква должна быть заглавной, ' +
+				'без пробелов и без цифр, нет спецсимволов (допустим только дефис)',
+		},
 		phone: {
 			pattern: /^[+-d]?\d{10,15}$/,
 			errorMsg: 'от 10 до 15 символов, состоит из цифр, может начинается с плюса',
@@ -54,10 +62,8 @@ class Validations {
 
 	if (!isValid) {
 		event.target.nextSibling.textContent = message;
-		console.log('Not');
 	} else {
 		event.target.nextSibling.textContent = '';
-		console.log('Ok');
 	}
 };
 
@@ -85,6 +91,10 @@ const onSubmit = (event: any): void => {
 	});
 
 	console.log(inputValue);
+
+	const chatsPage = new ChatsPage();
+	renderDOM('#app', chatsPage);
+
 };
 
 export { validate, onSubmit };

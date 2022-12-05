@@ -15,6 +15,8 @@ export class HomePage extends Block {
 		this.children.button = new Button({
 			type: 'button',
 			label: 'Жмякни',
+			className: 'button',
+			disabled: false,
 			events: {
 				click: () => {
 					const loginPage = new LoginPage();

@@ -4,6 +4,7 @@ import styles from './button.css';
 
 interface ButtonProps {
 	type?: string;
+	className: string;
   label: string;
   events?: any;
 }
