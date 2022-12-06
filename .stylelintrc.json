@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-hex-case": "lower"
+  },
+  "ignoreFiles": [
+    "build/*",
+    "dist/*",
+    "node_modules/*",
+    ".parcel-cache"
+  ]
+}

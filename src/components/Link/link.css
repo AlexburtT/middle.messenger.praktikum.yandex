@@ -1,0 +1,16 @@
+.homeLink {
+    color: var(--white);
+    margin-top: 3vh;
+}
+
+.formLink {
+    color: var(--darkGrey);
+    text-align: center;
+    padding-top: 15px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.formLink:hover {
+    color: var(--darkRed);
+}

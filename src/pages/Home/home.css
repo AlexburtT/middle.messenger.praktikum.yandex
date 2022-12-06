@@ -1,0 +1,18 @@
+h1 {
+    font-size: 13vmin;
+    color: var(--darkRed);
+    font-weight: 700;
+    font-stretch: 121%;
+    text-align: center;
+    font-variation-settings: 'slnt' -10;
+    padding-bottom: 3vh;
+}
+
+.logo {
+    background-image: url("../../public/logo.png");
+    filter: invert(20%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(80%);
+    width: 25vmin;
+    height: 25vmin;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

@@ -1,0 +1,54 @@
+.asideNavChats {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  min-height: 100%;
+  width: 100%;
+  border-right: 1px solid var(--lightGrey);
+  align-items: center;
+}
+
+.headerNavChats {
+  display: flex;
+  background-color: var(--lightGrey);
+  width: 100%;
+  align-items: center;
+}
+
+.inputSearchUser {
+  padding: 7px;
+  border-radius: 15px;
+  border: 1px solid var(--lightGrey);
+  outline: none;
+  width: 90%;
+
+  &::placeholder {
+    text-align: center;
+    color: var(--lightGrey);
+  }
+
+  &:focus,
+  &:active {
+    border: 1px solid var(--darkRed);
+  }
+}
+
+.avatarUserPrf {
+  width: 45px;
+  height: 45px;
+  background-color: var(--darkGrey);
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+}
+
+.linkAvatarUser {
+  color: var(--white);
+  text-align: center;
+}
+
+.navChats {}
+
+.childNavChats {}

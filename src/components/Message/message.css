@@ -1,0 +1,60 @@
+.sectionMessage {
+  min-height: 100vh;
+  display: grid;
+  grid-auto-rows: auto 1fr auto;
+  width: 100%;
+  justify-items: center;
+  align-items: end;
+}
+
+.headerMessage {}
+
+.dialogChat {
+  display: grid;
+  gap: 1em;
+  width: 90%;
+  margin: 1em auto;
+}
+
+.dialog {
+  max-width: 90%;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.dialogLeft {
+  justify-self: start;
+  background-color: #2e9aff;
+  border-bottom-left-radius: 0;
+}
+
+.dialogRight {
+  justify-self: end;
+  background-color: #f498ad;
+  border-bottom-right-radius: 0;
+}
+
+.formSendMessage {
+  display: grid;
+  width: 90%;
+  margin: 1em auto;
+  border-top: 1px solid var(--lightGrey);
+}
+
+.sendMessage {
+  max-width: 100%;
+  border-radius: 15px 0 0 15px;
+  border: 1px solid var(--lightGrey);
+  margin-top: 1vh;
+  padding: 7px;
+  outline: none;
+
+  &:focus,
+  &:active {
+    border: 1px solid var(--darkRed);
+  }
+
+  &:invalid {
+    color: var(--danger);
+  }
+}

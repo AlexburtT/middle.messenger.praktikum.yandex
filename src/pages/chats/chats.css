@@ -1,42 +1,7 @@
-@import "../../index.css";
-@import "../../components/asideChats/navUser.css";
-@import "../../components/asideChats/liChat.css";
-@import "../../components/asideChats/inputSend.css";
-
-html,
-body {
-	height: 100%;
-	font-family: "Roboto";
-	color: var(--darkGrey);
-}
-
-main {
-	display: flex;
-}
-
-.asideChats {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	background-color: var(--darkGrey);
-	width: 30%;
-}
-
-.asideChat {
-	display: flex;
-	flex-direction: column;
-	min-height: 100%;
-	background-color: var(--white);
-	width: 100%;
-}
-
-.messageUser {
-	display: flex;
-	flex: 1 0 auto;
-	justify-content: center;
-	align-items: center;
-}
-
-.messageUser>h3 {
-	font-weight: 400;
+.mainChats {
+    background-color: var(--white);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-items: center;
 }
