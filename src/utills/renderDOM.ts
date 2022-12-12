@@ -8,6 +8,6 @@ export function renderDOM(rootSelector: string, component: Block) {
   }
 
 	component.dispatchComponentDidMount();
-  root.innerHTML = '';
+  root.textContent = '';
   root.append(component.getContent()!);
 }
