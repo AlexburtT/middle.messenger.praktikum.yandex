@@ -1,9 +1,9 @@
-export enum Method {
-	GET = 'GET',
-	POST = 'POST',
-	PUT = 'PUT',
-	PATCH = 'PATCH',
-	DELETE = 'DELETE',
+export const enum Method {
+	Get = 'Get',
+	Post = 'Post',
+	Put = 'Put',
+	Patch = 'Patch',
+	Delete = 'Delete',
 }
 
 type RequestOptions = {
@@ -17,16 +17,16 @@ type HTTPMethod = (url: string, options?: RequestOptions) => Promise<unknown>;
 
 export class HTTPTransport {
 	get: HTTPMethod = (url, options = {}) =>
-		this.request(url, { ...options, method: Method.GET });
+		this.request(url, { ...options, method: Method.Get });
 
 	post: HTTPMethod = (url, options = {}) =>
-		this.request(url, { ...options, method: Method.POST });
+		this.request(url, { ...options, method: Method.Post });
 
 	put: HTTPMethod = (url, options = {}) =>
-		this.request(url, { ...options, method: Method.PUT });
+		this.request(url, { ...options, method: Method.Put });
 
 	delete: HTTPMethod = (url, options = {}) =>
-		this.request(url, { ...options, method: Method.DELETE });
+		this.request(url, { ...options, method: Method.Delete });
 
 	request = (url: string, options: RequestOptions = {}) => {
 		const { headers = {}, method, data } = options;
@@ -38,7 +38,7 @@ export class HTTPTransport {
 				return;
 			}
 
-			const isGet = method === Method.GET;
+			const isGet = method === Method.Get;
 
 			xhr.open(method, url);
 

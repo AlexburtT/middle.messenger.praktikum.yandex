@@ -13,6 +13,11 @@
     "import"
   ],
   "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_$" }
+    ],
     "no-underscore-dangle": "off",
     "no-param-reassign": "off",
     "dot-notation": "off",
@@ -32,10 +37,6 @@
       "error",
       "always",
       { "exceptAfterSingleLine": true }
-    ],
-    "no-unused-vars": [
-      "error",
-      { "argsIgnorePattern": "^_$" }
     ],
     "import/extensions": [
       "error",

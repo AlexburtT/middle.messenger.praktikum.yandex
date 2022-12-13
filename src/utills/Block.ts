@@ -10,18 +10,10 @@ class Block<Props extends Record<string, any> = any> {
   } as const;
 
   public id = nanoid(6);
-
 	private _element: HTMLElement | null = null;
   protected props: object;
 	public children: Record<string, Block | Block[]>;
 	private eventBus: () => EventBus;
-
-  /** JSDoc
-	 * @param {string} tagName
-	 * @param {Object} props
-	 *
-	 * @returns {void}
-	 */
 
   constructor(propsAndChildren: Props) {
     const eventBus = new EventBus();
