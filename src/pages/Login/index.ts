@@ -52,7 +52,7 @@ export class LoginPage extends Block {
 
 		this.children.link = new Link({
 			label: 'Ещё не зарегистрированы?',
-			route: '/registration',
+			route: '/sign-up',
 			className: 'formLink',
 			events: {
 				click: () => {

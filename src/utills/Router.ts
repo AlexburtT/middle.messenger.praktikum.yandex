@@ -1,15 +1,26 @@
-function isEqual(lhs, rhs) {
+import Block from './Block';
+function isEqual(lhs: string, rhs: string) {
 	return lhs === rhs;
 }
 
-function render(query, block) {
+function render(query: string, block: Block) {
 	const root = document.querySelector(query);
-	root.textContent = block.getContent();
+
+	if (root === null) {
+		throw new Error(`root not found by selector "${query}"`);
+	}
+
+	root.textContent = '';
+	root.append(block.getContent()!);
 	return root;
 }
 
 class Route {
-	constructor(pathname, view, props) {
+	private block: Block | null = null;
+	constructor(
+		pathname: string,
+		view: typeof Block,
+		props: string) {
 		this._pathname = pathname;
 		this._blockClass = view;
 		this._block = null;
