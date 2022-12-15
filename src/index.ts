@@ -1,7 +1,51 @@
 import { HomePage } from './pages/Home';
-import { renderDOM } from './utills/renderDOM';
+import Router from './utills/Router';
+import { LoginPage } from './pages/Login';
+import { RegisterPage } from './pages/Register';
+import { ProfilePage } from './pages/Profile';
+import { ChatsPage } from './pages/chats';
+import router from "./utills/Router";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const homePage = new HomePage();
-  renderDOM('#app', homePage);
+enum Routes {
+	Index = '/',
+	Login = '/sign-in',
+	Register = '/sign-up',
+	Profile = '/settings',
+	Messenger = '/messenger'
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+	Router
+		.use(Routes.Index, HomePage)
+		.use(Routes.Login, LoginPage)
+		.use(Routes.Register, RegisterPage)
+		.use(Routes.Profile, ProfilePage)
+		.use(Routes.Messenger, ChatsPage);
+
+	// let isProtectedRoute = true;
+	//
+	// switch (window.location.pathname) {
+	// 	case Routes.Index:
+	// 	case Routes.Register:
+	// 		isProtectedRoute = false;
+	// 		break;
+	// }
+	//
+	// try {
+	// 	await AuthController.fetchUser();
+	//
+	// 	Router.start();
+	//
+	// 	if (!isProtectedRoute) {
+	// 		Router.go(Routes.Profile);
+	// 	}
+	// } catch (e) {
+	// 	Router.start();
+	//
+	// 	if (isProtectedRoute) {
+	// 		Router.go(Routes.Index);
+	// 	}
+	// }
+	Router.start();
+	console.log(router);
 });
