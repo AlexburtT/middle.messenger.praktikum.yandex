@@ -4,14 +4,15 @@ import { LoginPage } from './pages/Login';
 import { RegisterPage } from './pages/Register';
 import { ProfilePage } from './pages/Profile';
 import { ChatsPage } from './pages/chats';
-import router from "./utills/Router";
+import { ErrorPage } from './pages/Error';
 
 enum Routes {
 	Index = '/',
 	Login = '/sign-in',
 	Register = '/sign-up',
 	Profile = '/settings',
-	Messenger = '/messenger'
+	Messenger = '/messenger',
+	Error = '/error',
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -20,7 +21,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 		.use(Routes.Login, LoginPage)
 		.use(Routes.Register, RegisterPage)
 		.use(Routes.Profile, ProfilePage)
-		.use(Routes.Messenger, ChatsPage);
+		.use(Routes.Messenger, ChatsPage)
+		.use(Routes.Error, ErrorPage);
 
 	// let isProtectedRoute = true;
 	//
@@ -47,5 +49,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// 	}
 	// }
 	Router.start();
-	console.log(router);
 });

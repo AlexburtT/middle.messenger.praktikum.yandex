@@ -9,6 +9,7 @@
   background-color: var(--darkRed);
   border-radius: 15px;
   box-shadow: 0 5px 15px rgb(51 51 51 / 60%);
+  text-align: center;
   transition: transform 0.2s;
 }
 

@@ -32,14 +32,8 @@ export class NavChatsBlock extends Block {
 
 		this.children.linkProfile = new Link({
 			label: 'АВ',
-			route: '#/profile',
+			route: '/settings',
 			className: 'linkAvatarUser',
-			events: {
-				click: () => {
-					const profilePage = new ProfilePage();
-					renderDOM('#app', profilePage);
-				},
-			},
 		});
 	}
 

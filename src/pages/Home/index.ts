@@ -1,10 +1,7 @@
 import template from './home.hbs';
 import Block from '../../utills/Block';
-import { Button } from '../../components/Button';
 import { Link } from '../../components/Link';
-import { renderDOM } from '../../utills/renderDOM';
-import { LoginPage } from '../Login';
-import { ErrorPage } from '../Error';
+
 
 export class HomePage extends Block {
 	constructor() {
@@ -12,30 +9,16 @@ export class HomePage extends Block {
 	}
 
 	init() {
-		this.children.button = new Button({
-			type: 'button',
+		this.children.signin = new Link({
 			label: 'Жмякни',
+			route: '/sign-in',
 			className: 'button',
-			disabled: false,
-			events: {
-				click: () => {
-					const loginPage = new LoginPage();
-					renderDOM('#app', loginPage);
-				},
-			},
 		});
 
 		this.children.link = new Link({
 			label: '404',
 			route: '/error',
 			className: 'homeLink',
-			events: {
-				click: () => {
-					const errorPage = new ErrorPage();
-					renderDOM('#app', errorPage);
-					console.log('ссылка');
-				},
-			},
 		});
 	}
 

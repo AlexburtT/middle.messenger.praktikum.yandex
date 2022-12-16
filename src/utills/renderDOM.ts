@@ -7,7 +7,7 @@ export function renderDOM(rootSelector: string, block: Block) {
     throw new Error(`root not found by selector "${rootSelector}"`);
   }
 
-	block.dispatchComponentDidMount();
+
   root.textContent = '';
   root.append(block.getContent()!);
 	return root;
