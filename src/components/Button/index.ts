@@ -4,12 +4,14 @@ import styles from './button.css';
 
 interface ButtonProps {
 	type?: string;
-	className: string;
   label: string;
-  events?: any;
+	stylesName: string;
+  events: {
+		click: () => void,
+	};
 }
 
-export class Button extends Block {
+export class Button extends Block<ButtonProps> {
   constructor(props: ButtonProps) {
     super({ ...props });
   }

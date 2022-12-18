@@ -11,13 +11,13 @@ export class HomePage extends Block {
 	init() {
 		this.children.signin = new Link({
 			label: 'Жмякни',
-			route: '/sign-in',
+			pathTo: '/sign-in',
 			className: 'button',
 		});
 
 		this.children.link = new Link({
 			label: '404',
-			route: '/error',
+			pathTo: '/error',
 			className: 'homeLink',
 		});
 	}

@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 		.use(Routes.Register, RegisterPage)
 		.use(Routes.Profile, ProfilePage)
 		.use(Routes.Messenger, ChatsPage)
-		.use(Routes.Error, ErrorPage);
+		.use(Routes.Error, ErrorPage)
+		.start();
 
 	// let isProtectedRoute = true;
 	//
@@ -48,5 +49,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// 		Router.go(Routes.Index);
 	// 	}
 	// }
-	Router.start();
 });

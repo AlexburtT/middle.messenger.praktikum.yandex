@@ -13,6 +13,7 @@ interface InputProps {
 	minLength?: number;
 	maxLength?: number;
 	events?: any;
+	inputMode: string;
 }
 
 export class Input extends Block {

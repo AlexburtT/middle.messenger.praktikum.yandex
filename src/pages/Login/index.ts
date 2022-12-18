@@ -15,11 +15,11 @@ export class LoginPage extends Block {
 
 	init() {
 		this.children.button = new Button({
-			type: 'submit',
+			type: 'button',
 			label: 'Войти',
-			className: 'button',
+			stylesName: 'button',
 			events: {
-				click: onSubmit,
+				click: () => onSubmit,
 				},
 		});
 

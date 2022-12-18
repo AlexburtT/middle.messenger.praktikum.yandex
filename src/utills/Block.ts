@@ -11,7 +11,7 @@ class Block<Props extends Record<string, any> = any> {
 
   public id = nanoid(6);
 	private _element: HTMLElement | null = null;
-  protected props: object;
+  protected props: Props;
 	public children: Record<string, Block | Block[]>;
 	private eventBus: () => EventBus;
 
@@ -27,7 +27,7 @@ class Block<Props extends Record<string, any> = any> {
 
 	private _render() {
 		const fragment = this.render();
-		this._removeEvents();
+		// this._removeEvents();
 		const newElement = fragment.firstElementChild as HTMLElement;
 		if (this._element && newElement) {
 			this._element.replaceWith(newElement);
@@ -36,13 +36,15 @@ class Block<Props extends Record<string, any> = any> {
 		this._addEvents();
 	}
 
-  _getChildren(childrenAndProps: Props):
+  private _getChildren(childrenAndProps: Props):
 		{ props: Props, children: Record<string, Block | Block[]> } {
     const props: Record<string, unknown> = {};
     const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (value instanceof Block) {
+			if (Array.isArray(value) && value.length > 0 && value.every(v => v instanceof Block)) {
+				children[key] = value;
+			} else if (value instanceof Block) {
         children[key] = value;
       } else {
         props[key] = value;
@@ -51,28 +53,29 @@ class Block<Props extends Record<string, any> = any> {
     return { props: props as Props, children };
   }
 
-	_addEvents() {
-		const events: Record<string, () => void> = (this.props as Props).events;
-		if (!events) {
-			return;
-		}
+	private _addEvents() {
+		const { events = {} } = this.props as Props & { events: Record<string, () => void> };
 
-		Object.entries(events).forEach(([event, listener]) => {
-			this._element?.addEventListener(event, listener);
+		// if (!events) {
+		// 	return;
+		// }
+
+		Object.keys(events).forEach(eventName => {
+			this._element?.addEventListener(eventName, events[eventName]);
 		});
 	}
 
-	_removeEvents() {
-		const events: Record<string, () => void> = (this.props as Props).events;
-
-		if (!events || !this._element) {
-			return;
-		}
-
-		Object.entries(events).forEach(([event, listener]) => {
-			this._element!.removeEventListener(event, listener);
-		});
-	}
+	// _removeEvents() {
+	// 	const { events = {} } = this.props as Props & { events: Record<string, () => void> };
+	//
+	// 	// if (!events || !this._element) {
+	// 	// 	return;
+	// 	// }
+	//
+	// 	Object.keys(events).forEach(eventName => {
+	// 		this._element!.removeEventListener(eventName, events[eventName]);
+	// 	});
+	// }
 
 	_registerEvents(eventBus: EventBus) {
 		eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
@@ -175,14 +178,14 @@ class Block<Props extends Record<string, any> = any> {
   _makePropsProxy(props: Props) {
     const self = this;
 
-    return new Proxy(props as unknown as object, {
-      get(target: Record<string, unknown>, prop: string) {
+    return new Proxy(props, {
+      get(target, prop: string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target: Record<string, unknown>, prop: string, value: unknown) {
+      set(target, prop: string, value) {
         const oldTarget = { ...target };
-        target[prop] = value;
+        target[prop as keyof Props] = value;
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },

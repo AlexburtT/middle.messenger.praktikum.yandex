@@ -1,6 +1,6 @@
 import Block from './Block';
 import { renderDOM } from './renderDOM';
-import { isEqual } from './isEqual';
+import { isEqual } from './hellpers/isEqual';
 
 class Route {
 	private _block: Block | null = null;
@@ -8,7 +8,6 @@ class Route {
 		private _pathname: string,
 		private _blockClass: typeof Block,
 		private readonly _query: string) {}
-
 
 	public leave() {
 		this._block = null;
