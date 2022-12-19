@@ -6,7 +6,10 @@ import { Link } from '../../components/Link';
 import { renderDOM } from '../../utills/renderDOM';
 import { RegisterPage } from '../Register';
 import styles from './login.css';
-import { validate, onSubmit } from '../../utills/validations';
+import { validate } from '../../utills/validations';
+import { onSubmit } from '../../utills/onSubmit';
+import AuthController from '../../modules/controllers/AuthController';
+import { SigninData } from '../../modules/api/interfaces/SigninData';
 
 export class LoginPage extends Block {
 	constructor() {
@@ -15,11 +18,14 @@ export class LoginPage extends Block {
 
 	init() {
 		this.children.button = new Button({
-			type: 'button',
+			type: 'submit',
 			label: 'Войти',
 			stylesName: 'button',
 			events: {
-				click: () => onSubmit,
+				click: (e: any): void => {
+					const data = onSubmit(e);
+					AuthController.signin!(data as unknown as SigninData);
+				},
 				},
 		});
 
@@ -31,6 +37,7 @@ export class LoginPage extends Block {
 			autofocus: true,
 			minLength: 3,
 			maxLength: 20,
+			inputMode: 'text',
 			events: {
 				blur: validate,
 				focus: validate,
@@ -44,6 +51,7 @@ export class LoginPage extends Block {
 			required: true,
 			minLength: 8,
 			maxLength: 20,
+			inputMode: 'text',
 			events: {
 				blur: validate,
 				focus: validate,

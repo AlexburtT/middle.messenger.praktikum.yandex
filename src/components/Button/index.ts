@@ -5,9 +5,9 @@ import styles from './button.css';
 interface ButtonProps {
 	type?: string;
   label: string;
-	stylesName: string;
-  events: {
-		click: () => void,
+	className: string;
+  events?: {
+		click: (e: Event) => void,
 	};
 }
 

@@ -6,6 +6,9 @@ import { Button } from '../../components/Button';
 import { renderDOM } from '../../utills/renderDOM';
 import { EditProfilePage } from '../EditProfile';
 import { EditPasswordPage } from '../EditPassword';
+import {onSubmit} from "../../utills/onSubmit";
+import AuthController from "../../modules/controllers/AuthController";
+import {SigninData} from "../../modules/api/interfaces/SigninData";
 
 export class ProfilePage extends Block {
 	constructor() {
@@ -18,6 +21,17 @@ export class ProfilePage extends Block {
 			inputName: 'avatar',
 			className: 'fotoUserInput',
 			required: false,
+		});
+
+		this.children.logOut = new Button({
+			type: 'button',
+			label: 'Выйти',
+			className: 'button',
+			events: {
+				click: (): void => {
+					AuthController.logout!();
+				},
+			},
 		});
 
 		this.children.button = new Button({

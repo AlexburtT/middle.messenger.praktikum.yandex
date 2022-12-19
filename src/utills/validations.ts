@@ -1,7 +1,4 @@
-import { renderDOM } from './renderDOM';
-import { ChatsPage } from '../pages/chats';
-
-class Validations {
+export class Validations {
 	public static INPUTS: Record<string,
 		{
 		pattern: RegExp;
@@ -67,34 +64,4 @@ class Validations {
 	}
 };
 
-const onSubmit = (event: any): void => {
-	event.preventDefault();
-
-	const inputValue: Record<string, string> = {};
-	const inputList = document.querySelectorAll('input');
-
-	const isError: boolean = Array.from(inputList).some((input: Element) => {
-		const inputType = input as HTMLInputElement | null;
-		const value = inputType!.value;
-		const name = inputType!.name;
-		return !Validations.INPUTS[name].pattern.test(value);
-	});
-
-	if (isError) {
-		event.target.form.nextSibling.textContent = 'Заполните все поля правильно';
-		return;
-	}
-
-	event.target.form.nextSibling.textContent = '';
-	inputList.forEach((input: any) => {
-		inputValue[input.name] = input.value;
-	});
-
-	console.log(inputValue);
-
-	const chatsPage = new ChatsPage();
-	renderDOM('#app', chatsPage);
-
-};
-
-export { validate, onSubmit };
+export { validate };
