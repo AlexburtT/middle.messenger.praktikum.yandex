@@ -20,7 +20,7 @@ export class LoginPage extends Block {
 		this.children.button = new Button({
 			type: 'submit',
 			label: 'Войти',
-			stylesName: 'button',
+			className: 'button',
 			events: {
 				click: (e: any): void => {
 					const data = onSubmit(e);

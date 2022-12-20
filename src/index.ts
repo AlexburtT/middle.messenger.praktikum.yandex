@@ -5,6 +5,7 @@ import { RegisterPage } from './pages/Register';
 import { ProfilePage } from './pages/Profile';
 import { ChatsPage } from './pages/chats';
 import { ErrorPage } from './pages/Error';
+import AuthController from './modules/controllers/AuthController';
 
 enum Routes {
 	Index = '/',
@@ -25,28 +26,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 		.use(Routes.Error, ErrorPage)
 		.start();
 
-	// let isProtectedRoute = true;
-	//
-	// switch (window.location.pathname) {
-	// 	case Routes.Index:
-	// 	case Routes.Register:
-	// 		isProtectedRoute = false;
-	// 		break;
-	// }
-	//
-	// try {
-	// 	await AuthController.fetchUser();
-	//
-	// 	Router.start();
-	//
-	// 	if (!isProtectedRoute) {
-	// 		Router.go(Routes.Profile);
-	// 	}
-	// } catch (e) {
-	// 	Router.start();
-	//
-	// 	if (isProtectedRoute) {
-	// 		Router.go(Routes.Index);
-	// 	}
-	// }
+	let isProtectedRoute = true;
+
+	switch (window.location.pathname) {
+		case Routes.Index:
+		case Routes.Register:
+		case Routes.Login:
+			isProtectedRoute = false;
+			break;
+	}
+
+	try {
+		await AuthController.fetchUser();
+		Router.start();
+		if (!isProtectedRoute) {
+			Router.go(Routes.Profile);
+		}
+
+	} catch (e) {
+		Router.start();
+
+		if (isProtectedRoute) {
+			Router.go(Routes.Index);
+		}
+	}
 });

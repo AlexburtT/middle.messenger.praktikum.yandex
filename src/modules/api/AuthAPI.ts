@@ -1,7 +1,7 @@
 import BaseAPI from './BaseAPI';
 import { SigninData } from './interfaces/SigninData';
 import { SignupData } from './interfaces/SignupData';
-import { UserData } from './interfaces/UserData';
+import { User } from './interfaces/UserData';
 
 
 export class AuthAPI extends BaseAPI {
@@ -9,15 +9,15 @@ export class AuthAPI extends BaseAPI {
 		super('/auth');
 	}
 
-	public signin(dataSignin: SigninData) {
-		return this.http.post('/signin', dataSignin);
+	public signin(data: SigninData) {
+		return this.http.post('/signin', data);
 	}
 
-	public signup(dataSignup: SignupData) {
-		return this.http.post('/signup', dataSignup);
+	public signup(data: SignupData) {
+		return this.http.post('/signup', data);
 	}
 
-	public read(): Promise<UserData> {
+	public read(): Promise<User> {
 		return this.http.get('/user');
 	}
 
@@ -29,3 +29,5 @@ export class AuthAPI extends BaseAPI {
 	update = undefined;
 	delete = undefined;
 }
+
+export default new AuthAPI();

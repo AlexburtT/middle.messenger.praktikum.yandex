@@ -1,4 +1,4 @@
-export interface UserData {
+export interface User {
 	id: number,
 	first_name: string,
 	second_name: string,

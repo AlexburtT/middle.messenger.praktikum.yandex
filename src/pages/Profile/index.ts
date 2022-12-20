@@ -1,27 +1,16 @@
 import Block from '../../utills/Block';
 import template from './profile.hbs';
 import styles from './profile.css';
-import { Input } from '../../components/Input/input';
+
 import { Button } from '../../components/Button';
-import { renderDOM } from '../../utills/renderDOM';
-import { EditProfilePage } from '../EditProfile';
-import { EditPasswordPage } from '../EditPassword';
-import {onSubmit} from "../../utills/onSubmit";
-import AuthController from "../../modules/controllers/AuthController";
-import {SigninData} from "../../modules/api/interfaces/SigninData";
 
-export class ProfilePage extends Block {
-	constructor() {
-		super({});
-	}
+import AuthController from '../../modules/controllers/AuthController';
+import { withStore } from '../../modules/hocsApi/withStore';
 
+
+class ProfilePageBase extends Block {
 	init() {
-		this.children.avatar = new Input({
-			type: 'file',
-			inputName: 'avatar',
-			className: 'fotoUserInput',
-			required: false,
-		});
+		// AuthController.fetchUser!();
 
 		this.children.logOut = new Button({
 			type: 'button',
@@ -34,32 +23,37 @@ export class ProfilePage extends Block {
 			},
 		});
 
-		this.children.button = new Button({
-			type: 'submit',
-			label: 'Изменить',
-			className: 'button',
-			events: {
-				click: () => {
-					const editProfilePage = new EditProfilePage();
-					renderDOM('#app', editProfilePage);
-				},
-			},
-		});
-
-		this.children.buttonPass = new Button({
-			type: 'submit',
-			label: 'Изменить',
-			className: 'button',
-			events: {
-				click: () => {
-					const editPasswordPage = new EditPasswordPage();
-					renderDOM('#app', editPasswordPage);
-				},
-			},
-		});
+		// this.children.button = new Button({
+		// 	type: 'submit',
+		// 	label: 'Изменить',
+		// 	className: 'button',
+		// 	events: {
+		// 		click: () => {
+		// 			const editProfilePage = new EditProfilePage();
+		// 			renderDOM('#app', editProfilePage);
+		// 		},
+		// 	},
+		// });
+		//
+		// this.children.buttonPass = new Button({
+		// 	type: 'submit',
+		// 	label: 'Изменить',
+		// 	className: 'button',
+		// 	events: {
+		// 		click: () => {
+		// 			const editPasswordPage = new EditPasswordPage();
+		// 			renderDOM('#app', editPasswordPage);
+		// 		},
+		// 	},
+		// });
 	}
 
 	render() {
 		return this.compile(template, { ...this.props, styles });
 	}
 }
+
+
+const withUser = withStore((state) => (state.user || { isLoading: true }));
+
+export const ProfilePage = withUser(ProfilePageBase);

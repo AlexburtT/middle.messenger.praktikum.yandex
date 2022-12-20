@@ -2,7 +2,10 @@ import Block from '../../utills/Block';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input/input';
 import template from './register.hbs';
-import { onSubmit, validate } from '../../utills/validations';
+import { validate } from '../../utills/validations';
+import AuthController from '../../modules/controllers/AuthController';
+import { SignupData } from '../../modules/api/interfaces/SignupData';
+import { onSubmit } from '../../utills/onSubmit';
 
 export class RegisterPage extends Block {
 	constructor() {
@@ -15,7 +18,10 @@ export class RegisterPage extends Block {
 			label: 'Создать аккаунт',
 			className: 'button',
 			events: {
-					click: onSubmit,
+					click: (e: any) => {
+						const data = onSubmit(e);
+						AuthController.signup!(data as unknown as SignupData);
+					},
 			},
 		});
 
@@ -25,6 +31,7 @@ export class RegisterPage extends Block {
 			className: 'input',
 			required: true,
 			autofocus: true,
+			inputMode: 'text',
 			events: {
 				blur: validate,
 				focus: validate,
@@ -36,6 +43,7 @@ export class RegisterPage extends Block {
 			inputName: 'second_name',
 			className: 'input',
 			required: true,
+			inputMode: 'text',
 			events: {
 				blur: validate,
 				focus: validate,
@@ -49,6 +57,7 @@ export class RegisterPage extends Block {
 			required: true,
 			minLength: 3,
 			maxLength: 20,
+			inputMode: 'text',
 			events: {
 				blur: validate,
 				focus: validate,
@@ -60,6 +69,7 @@ export class RegisterPage extends Block {
 			inputName: 'email',
 			className:'input',
 			required: true,
+			inputMode: 'email',
 			events: {
 				blur: validate,
 				focus: validate,
@@ -73,6 +83,7 @@ export class RegisterPage extends Block {
 			required: true,
 			minLength: 8,
 			maxLength: 40,
+			inputMode: 'text',
 			events: {
 				blur: validate,
 				focus: validate,
@@ -86,6 +97,7 @@ export class RegisterPage extends Block {
 			required: true,
 			minLength: 10,
 			maxLength: 15,
+			inputMode: 'tel',
 			events: {
 				blur: validate,
 				focus: validate,

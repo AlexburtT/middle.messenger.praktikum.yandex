@@ -1,28 +1,33 @@
 import { SignupData } from '../api/interfaces/SignupData';
 import { SigninData } from '../api/interfaces/SigninData';
-import { AuthAPI } from '../api/AuthAPI';
+import API, { AuthAPI } from '../api/AuthAPI';
 import store from '../../utills/Store';
 import Router from '../../utills/Router';
 
-class AuthController {
-	private api = new AuthAPI();
-	async signup(dataSignup: SignupData) {
+export class AuthController {
+	private readonly api: AuthAPI;
+
+	constructor() {
+		this.api = API;
+	}
+
+	async signup(data: SignupData) {
 		try {
-			await this.api.signup(dataSignup);
+			await this.api.signup(data);
 			await this.fetchUser();
 			Router.go('/messenger');
 		} catch (e) {
-			store.set('user.error', e);
+			store.set('user', e);
 		}
 	}
 
-	async signin(dataSignin: SigninData) {
+	async signin(data: SigninData) {
 		try {
-			await this.api.signin(dataSignin);
-			await this.fetchUser();
+			await this.api.signin(data);
+
 			Router.go('/messenger');
 		} catch (e) {
-			store.set('user.error', e);
+			store.set('userr', e);
 		}
 
 	}
@@ -32,20 +37,15 @@ class AuthController {
 			await this.api.logout();
 			Router.go('/');
 		} catch (e) {
-			store.set('user.error', e);
+			store.set('user', e);
 		}
 	}
 
 	async fetchUser() {
 		store.set('user.isLoading', true);
-		try {
-			const user = await this.api.read();
-			store.set('user.data', user);
-		} catch (e) {
-			store.set('user.error', e);
-		} finally {
-			store.set('user.isLoading', false);
-		}
+		const user = await this.api.read();
+		store.set('user', user);
+		store.set('user.isLoading', false);
 	}
 }
 
