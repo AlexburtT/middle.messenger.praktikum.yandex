@@ -3,48 +3,16 @@
 		{{#if isLoading}}
 				Loading...
 		{{else}}
-		<div class="sectionAvatar">
-<!--			<div class="fotoUser">-->
-<!--				{{{ avatar }}}-->
-<!--				<label for="avatar" class="fotoUserLabel">Логин</label>-->
-<!--			</div>-->
+			{{{ avatar }}}
 			<h2>{{ first_name }} {{ second_name }}</h2>
 			{{{ logOut}}}
 		</div>
 		<div class="profileDataSection">
 			<div class="formBorder">
 				<legend>Личные данные</legend>
-				<div class="formUser">
-					<div class="rowProfile">
-						<p name="email">Почта
-						<p>{{ email }}</p>
-						</p>
-					</div>
-					<div class="rowProfile">
-						<p name="login">Логин
-						<p>{{ login }}</p>
-						</p>
-					</div>
-					<div class="rowProfile">
-						<p name="first_name">Имя
-						<p>{{ first_name }}</p>
-						</p>
-					</div>
-					<div class="rowProfile">
-						<p name="second_name">Фамилия
-						<p>{{ second_name }}</p>
-						</p>
-					</div>
-					<div class="rowProfile">
-						<p name="display_name">Имя в чате
-						<p>{{ display_name }}</p>
-						</p>
-					</div>
-					<div class="rowProfile">
-						<p name="phone">Телефон
-						<p>{{ phone }}</p>
-						</p>
-					</div>
+				{{#each fields}}
+					{{{ this }}}
+				{{/each}}
 					{{{ button }}}
 				</div>
 			</div>

@@ -1,0 +1,9 @@
+.avatar {
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    background: var(--darkGrey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

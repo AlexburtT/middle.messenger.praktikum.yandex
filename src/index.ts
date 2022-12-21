@@ -2,16 +2,16 @@ import { HomePage } from './pages/Home';
 import Router from './utills/Router';
 import { LoginPage } from './pages/Login';
 import { RegisterPage } from './pages/Register';
-import { ProfilePage } from './pages/Profile';
 import { ChatsPage } from './pages/chats';
 import { ErrorPage } from './pages/Error';
 import AuthController from './modules/controllers/AuthController';
+import { SettingsPage } from './pages/Settings';
 
 enum Routes {
 	Index = '/',
 	Login = '/sign-in',
 	Register = '/sign-up',
-	Profile = '/settings',
+	Settings = '/settings',
 	Messenger = '/messenger',
 	Error = '/error',
 }
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		.use(Routes.Index, HomePage)
 		.use(Routes.Login, LoginPage)
 		.use(Routes.Register, RegisterPage)
-		.use(Routes.Profile, ProfilePage)
+		.use(Routes.Settings, SettingsPage)
 		.use(Routes.Messenger, ChatsPage)
 		.use(Routes.Error, ErrorPage)
 		.start();
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		await AuthController.fetchUser();
 		Router.start();
 		if (!isProtectedRoute) {
-			Router.go(Routes.Profile);
+			Router.go(Routes.Settings);
 		}
 
 	} catch (e) {
