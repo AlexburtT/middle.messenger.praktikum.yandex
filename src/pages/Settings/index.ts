@@ -5,18 +5,24 @@ import { Button } from '../../components/Button';
 import AuthController from '../../modules/controllers/AuthController';
 import { withStore } from '../../modules/hocsApi/withStore';
 import { Avatar } from '../../components/Avatar';
-import { User } from '../../modules/api/interfaces/UserData';
+import { IUser } from '../../modules/api/interfaces/UserData';
 import { Profile } from '../../components/Profile';
 
-interface SettingsProps extends User {}
+interface SettingsProps extends IUser {}
+
 const userFields = ['first_name', 'second_name', 'display_name', 'login',
 	'email', 'phone'] as Array<keyof SettingsProps>;
+
+const labelFields = ['Имя', 'Фамилия', 'Имя в чате', 'Логин',
+	'E-mail', 'Телефон'];
+
 
 class SettingsPageBase extends Block<SettingsProps> {
 	init() {
 		//AuthController.fetchUser!();
-		this.children.fields = userFields.map(name => {
-			return new Profile({ name, value: this.props[name] });
+		this.children.fields = userFields.map((name, index) => {
+			const label = labelFields[index];
+			return new Profile({ name, label: label, value: this.props[name] });
 		});
 
 		this.children.logOut = new Button({
@@ -37,8 +43,9 @@ class SettingsPageBase extends Block<SettingsProps> {
 
 	protected componentDidUpdate(oldProps: SettingsProps, newProps: SettingsProps): boolean {
 
-		this.children.fields = userFields.map(name => {
-			return new Profile({ name, value: newProps[name] });
+		this.children.fields = userFields.map((name, index) => {
+			const label = labelFields[index];
+			return new Profile({ name, label: label, value: newProps[name] });
 		});
 
 		return super.componentDidUpdate(oldProps, newProps);

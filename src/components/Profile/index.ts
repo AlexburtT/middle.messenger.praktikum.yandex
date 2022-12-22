@@ -5,6 +5,7 @@ import styles from './profile.css';
 
 interface ProfileProps {
 	name: string,
+	label: string,
 	value: string | number,
 }
 
