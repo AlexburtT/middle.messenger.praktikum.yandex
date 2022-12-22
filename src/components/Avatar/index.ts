@@ -5,6 +5,9 @@ import styles from './avatar.css';
 interface AvatarProps {
 	src: string,
 	alt: string,
+	events?: {
+		click: (e: Event) => void;
+	}
 }
 
 export class Avatar extends Block<AvatarProps> {

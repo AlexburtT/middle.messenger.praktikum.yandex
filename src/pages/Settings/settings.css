@@ -58,27 +58,6 @@
   margin-bottom: 25px;
 }
 
-.rowProfile {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  padding: 5px 0;
-  border-bottom: 1px solid var(--lightGrey);
-  font-size: 14px;
-}
-
-.rowProfile:hover {
-  opacity: 0.7;
-}
-
-.rowProfile:nth-child(6),
-.rowProfile:last-child {
-  margin-bottom: 15px;
-}
-
-p[name] {
-  font-weight: 700;
-}
-
 .editBtn,
 .cancelBtn {
   font-weight: 400;

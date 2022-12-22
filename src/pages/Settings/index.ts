@@ -19,7 +19,6 @@ const labelFields = ['Имя', 'Фамилия', 'Имя в чате', 'Логи
 
 class SettingsPageBase extends Block<SettingsProps> {
 	init() {
-		//AuthController.fetchUser!();
 		this.children.fields = userFields.map((name, index) => {
 			const label = labelFields[index];
 			return new Profile({ name, label: label, value: this.props[name] });
@@ -36,7 +35,7 @@ class SettingsPageBase extends Block<SettingsProps> {
 			},
 		});
 		this.children.avatar = new Avatar({
-			src: '',
+			src: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
 			alt: 'аватар',
 		});
 	}
@@ -46,6 +45,10 @@ class SettingsPageBase extends Block<SettingsProps> {
 		this.children.fields = userFields.map((name, index) => {
 			const label = labelFields[index];
 			return new Profile({ name, label: label, value: newProps[name] });
+		});
+
+		(this.children.avatar as Avatar).setProps({
+			src: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
 		});
 
 		return super.componentDidUpdate(oldProps, newProps);
