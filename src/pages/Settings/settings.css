@@ -1,96 +1,22 @@
-.profileData {
+.avatar_form {
+  display: flex;
+  margin: 3vh;
+  gap: 3vh;
+  align-items: center;
+}
+
+.user_data {
+  width: 80%;
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
-  width: 500px;
-  padding: 20px;
-  border-radius: 30px;
-  box-shadow: 0 15px 25px rgb(51 51 51 / 60%);
-  align-items: center;
+  margin: 0 3vh 3vh 3vh;
+  border: 1px solid var(--light);
+  border-radius: var(--radius);
+  gap: 0.5vh;
 }
 
-.sectionAvatar {
-  width: 90%;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  margin-bottom: 15px;
-  gap: 30px;
-
-  & > h2 {
-    color: var(--darkRed);
-  }
-}
-
-.fotoUser {
+.button_link-div {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  background-color: var(--lightGrey);
-  border-radius: 50%;
-}
 
-.fotoUserLabel {
-  font-weight: 500;
-}
-
-.fotoUserLabel:hover {
-  color: var(--darkRed);
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.fotoUserInput {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  position: absolute;
-  z-index: -10;
-}
-
-.profileDataSection {
-  width: 90%;
-}
-
-.formBorder {
-  margin-bottom: 25px;
-}
-
-.editBtn,
-.cancelBtn {
-  font-weight: 400;
-  color: var(--darkGrey);
-  border: 1px solid var(--lightGrey);
-  padding: 5px 10px;
-  border-radius: 10px;
-}
-
-.saveBtn {
-  font-weight: 600;
-  color: var(--darkRed);
-  margin-left: 15px;
-  border: 1px solid var(--darkRed);
-  padding: 5px 10px;
-  border-radius: 10px;
-}
-
-.saveBtn:hover,
-.editBtn:hover,
-.cancelBtn:hover {
-  background-color: var(--transparent);
-}
-
-.btnGroup {
-  text-align: end;
-}
-
-.activFormName {
-  color: var(--darkRed);
-  font-weight: 400;
-}
-
-.activFormBorder {
-  border: 1px solid var(--darkRed);
+  gap: 3vh;
 }

@@ -1,5 +1,6 @@
-<main>
-	<section class="profileData">
+<main class="page">
+	<section class="form-card">
+		<div class="avatar_form">
 		{{#if isLoading}}
 				Loading...
 		{{else}}
@@ -7,37 +8,18 @@
 			<h2>{{ first_name }} {{ second_name }}</h2>
 			{{{ logOut}}}
 		</div>
-		<div class="profileDataSection">
-			<div class="formBorder">
-				<legend>Личные данные</legend>
-				{{#each fields}}
-					{{{ this }}}
-				{{/each}}
-					{{{ button }}}
-				</div>
-			</div>
-			{{/if}}
-			<fieldset class="activFormBorder">
-				<legend class="activFormName">Изменить пароль</legend>
-				<form class="formPassword">
-					<div class="rowProfile">
-						<p name="old_password">Старый пароль
-						<p>********</p>
-						</p>
-					</div>
-					<div class="rowProfile">
-						<p name="new_password">Новый пароль
-						<p>**********</p>
-						</p>
-					</div>
-					<div class="rowProfile">
-						<p name="new_password">Повторите новый пароль
-						<p>**********</p>
-						</p>
-					</div>
-				</form>
-				{{{ buttonPass }}}
-			</fieldset>
+
+		<fieldset class="user_data">
+			<legend class="legend">Личные данные</legend>
+			{{#each fields}}
+				{{{ this }}}
+			{{/each}}
+		</fieldset>
+		{{/if}}
+
+		<div class="button_link-div">
+			{{{ editProfile }}}
+			{{{ editPassword }}}
 		</div>
 	</section>
 </main>

@@ -1,13 +1,13 @@
-@import url("../pages/Home/home.css");
-
 :root {
-  --darkRed: #8c0d17;
-  --darkGrey: #496373;
-  --lightGrey: #ced5da;
-  --danger: #ff0013;
-  --white: #fff;
-  --transparent: #8c0d181c;
-  --valid: #0c5d00;
+    --dark: #0f172a;
+    --light: #e2e8f0;
+    --white: #f8fafc;
+    --akcent: #da0038;
+    --grey: #64748b;
+    --success: #e3a3b4;
+    --valid: #84cc16;
+    --opacity: 0.7;
+    --radius: 1rem;
 }
 
 @font-face {
@@ -26,20 +26,22 @@
   text-decoration: none;
 }
 
-html {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-  justify-content: center;
-  width: 100%;
-  background-color: var(--darkGrey);
-  font-family: Roboto, sans-serif;
+body {
+    height: 100dvh;
+    font-family: Roboto, sans-serif;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-weight: 300;
+.page {
+    font-size: 16px;
+    background: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    container-type: inline-size;
+    container-name: page;
 }
+
+
+

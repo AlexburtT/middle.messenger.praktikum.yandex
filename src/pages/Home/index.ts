@@ -1,6 +1,7 @@
 import template from './home.hbs';
 import Block from '../../utills/Block';
 import { Link } from '../../components/Link';
+import styles from './home.css';
 
 
 export class HomePage extends Block {
@@ -12,17 +13,17 @@ export class HomePage extends Block {
 		this.children.signin = new Link({
 			label: 'Жмякни',
 			pathTo: '/sign-in',
-			className: 'button',
+			className: 'link_button',
 		});
 
 		this.children.link = new Link({
 			label: '404',
 			pathTo: '/error',
-			className: 'homeLink',
+			className: 'link',
 		});
 	}
 
 	render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template, { ...this.props, styles });
   }
 }

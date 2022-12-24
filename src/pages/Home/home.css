@@ -1,6 +1,6 @@
-h1 {
+.name {
     font-size: 13vmin;
-    color: var(--darkRed);
+    color: var(--akcent);
     font-weight: 700;
     font-stretch: 121%;
     text-align: center;

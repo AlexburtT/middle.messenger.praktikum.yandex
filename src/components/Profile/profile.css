@@ -1,9 +1,8 @@
-
 .profile_row {
     display: grid;
     grid-template-columns: 1fr auto;
     padding: 5px 0;
-    border-bottom: 1px solid var(--lightGrey);
+    border-bottom: 1px solid var(--light);
     font-size: 14px;
 }
 
@@ -11,11 +10,6 @@
     opacity: 0.7;
 }
 
-
-.profile_row:last-child {
-    margin-bottom: 15px;
-}
-
 p[name] {
-    font-weight: 500;
+    font-weight: 600;
 }

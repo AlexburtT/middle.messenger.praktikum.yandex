@@ -1,18 +1,41 @@
 .button {
-  font-weight: 500;
-  width: 17vmax;
-  margin-top: 2vh;
+  color: var(--white);
+  background: var(--akcent);
+  border-radius: var(--radius);
   margin-bottom: 2vh;
-  color: white;
-  border-style: none;
-  padding: 10px;
-  background-color: var(--darkRed);
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgb(51 51 51 / 60%);
-  text-align: center;
-  transition: transform 0.2s;
+  width: 80%;
+  height: 5vh;
 }
 
 .button:hover {
-  transform: scale(1.05);
+  opacity: var(--opacity);
+  transition: opacity 0.3s linear;
+}
+
+.button_outline {
+  color: var(--grey);
+  background: var(--light);
+  border-radius: var(--radius);
+  width: 80%;
+  height: 5vh;
+}
+
+
+.button_outline:hover {
+  color: var(--white);
+  background: var(--success);
+  transition: all 0.3s linear;
+}
+
+.button_link {
+  color: var(--success);
+  background: none;
+  font-size: 0.8rem;
+  margin-bottom: 3vh;
+  font-weight: 600;
+}
+
+.button_link:hover {
+  color: var(--akcent);
+  transition: all 0.3s linear;
 }

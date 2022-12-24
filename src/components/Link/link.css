@@ -1,16 +1,28 @@
-.homeLink {
+.link_button {
+    font-size: 2.5vh;
     color: var(--white);
-    margin-top: 3vh;
+    background: var(--akcent);
+    border-radius: var(--radius);
+    margin-bottom: 2vh;
+    width: 30dvmin;
+    padding: 1vh 3vh;
+    text-align: center;
 }
 
-.formLink {
-    color: var(--darkGrey);
+.link_button:hover {
+    opacity: var(--opacity);
+    transition: opacity 0.3s linear;
+}
+
+.link {
+    color: var(--success);
+    margin-bottom: 3vh;
     text-align: center;
-    padding-top: 15px;
     font-size: 1rem;
     font-weight: 500;
 }
 
-.formLink:hover {
-    color: var(--darkRed);
+.link:hover {
+    color: var(--akcent);
+    transition: all 0.3s linear;
 }

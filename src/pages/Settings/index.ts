@@ -27,7 +27,7 @@ class SettingsPageBase extends Block<SettingsProps> {
 		this.children.logOut = new Button({
 			type: 'button',
 			label: 'Выйти',
-			className: 'button',
+			className: 'button_outline',
 			events: {
 				click: (): void => {
 					AuthController.logout!();
@@ -37,6 +37,16 @@ class SettingsPageBase extends Block<SettingsProps> {
 		this.children.avatar = new Avatar({
 			src: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
 			alt: 'аватар',
+		});
+
+		this.children.editProfile = new Button({
+			label: 'Изменить личные данные',
+			className: 'button_link',
+		});
+
+		this.children.editPassword = new Button({
+			label: 'Изменить пароль',
+			className: 'button_link',
 		});
 	}
 
