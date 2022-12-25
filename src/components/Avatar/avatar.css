@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.avatar:hover {
+    opacity: var(--opacity);
+}
+
 .avatar_img {
     border-radius: 50%;
     max-height: 100%;

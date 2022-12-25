@@ -1,7 +1,7 @@
 import BaseAPI from './BaseAPI';
 import { SigninData } from './interfaces/SigninData';
 import { SignupData } from './interfaces/SignupData';
-import { User } from './interfaces/UserData';
+import { IUser } from './interfaces/UserData';
 
 
 export class AuthAPI extends BaseAPI {
@@ -17,7 +17,7 @@ export class AuthAPI extends BaseAPI {
 		return this.http.post('/signup', data);
 	}
 
-	public read(): Promise<User> {
+	public read(): Promise<IUser> {
 		return this.http.get('/user');
 	}
 

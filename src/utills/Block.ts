@@ -27,7 +27,7 @@ class Block<Props extends Record<string, any> = any> {
 
 	private _render() {
 		const fragment = this.render();
-		// this._removeEvents();
+		this._removeEvents();
 		const newElement = fragment.firstElementChild as HTMLElement;
 		if (this._element && newElement) {
 			this._element.replaceWith(newElement);
@@ -36,16 +36,20 @@ class Block<Props extends Record<string, any> = any> {
 		this._addEvents();
 	}
 
+	protected render(): DocumentFragment {
+		return new DocumentFragment();
+	}
+
   private _getChildren(childrenAndProps: Props):
 		{ props: Props, children: Record<string, Block | Block[]> } {
     const props: Record<string, unknown> = {};
     const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-			if (Array.isArray(value) && value.length > 0 && value.every(v => v instanceof Block)) {
-				children[key] = value;
+			if (Array.isArray(value) && value.length > 0 && value.every((v) => v instanceof Block)) {
+				children[key as string] = value;
 			} else if (value instanceof Block) {
-        children[key] = value;
+        children[key as string] = value;
       } else {
         props[key] = value;
       }
@@ -56,28 +60,12 @@ class Block<Props extends Record<string, any> = any> {
 	private _addEvents() {
 		const { events = {} } = this.props as Props & { events: Record<string, () => void> };
 
-		// if (!events) {
-		// 	return;
-		// }
-
 		Object.keys(events).forEach(eventName => {
 			this._element?.addEventListener(eventName, events[eventName]);
 		});
 	}
 
-	// _removeEvents() {
-	// 	const { events = {} } = this.props as Props & { events: Record<string, () => void> };
-	//
-	// 	// if (!events || !this._element) {
-	// 	// 	return;
-	// 	// }
-	//
-	// 	Object.keys(events).forEach(eventName => {
-	// 		this._element!.removeEventListener(eventName, events[eventName]);
-	// 	});
-	// }
-
-	_registerEvents(eventBus: EventBus) {
+	private _registerEvents(eventBus: EventBus) {
 		eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
 		eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
 		eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
@@ -91,25 +79,25 @@ class Block<Props extends Record<string, any> = any> {
 
 	protected init() {}
 
-	_componentDidMount() {
+	private _componentDidMount() {
 		this.componentDidMount();
 	}
 
-	componentDidMount() {}
+	public componentDidMount() {}
 
 	public dispatchComponentDidMount() {
 		this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
 		Object.values(this.children).forEach(child => {
 			if (Array.isArray(child)) {
-				child.forEach(ch => ch.dispatchComponentDidMount());
+				child.forEach((ch) => ch.dispatchComponentDidMount());
 			} else {
 				child.dispatchComponentDidMount();
 			}
 		});
 	}
 
-  private _componentDidUpdate(oldProps: Props, newProps: Props) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props): void {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (response) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -120,14 +108,14 @@ class Block<Props extends Record<string, any> = any> {
     return true;
   }
 
-  setProps = (nextProps: Partial<Props>) => {
+  public setProps = (nextProps: Partial<Props>) => {
     if (!nextProps) {
       return;
     }
     Object.assign(this.props, nextProps);
   };
 
-  get element() {
+  public get element() {
     return this._element;
   }
 
@@ -167,15 +155,11 @@ class Block<Props extends Record<string, any> = any> {
     return temp.content;
   }
 
-	protected render(): DocumentFragment {
-		return new DocumentFragment();
-	}
-
-  getContent() {
+  public getContent() {
     return this.element;
   }
 
-  _makePropsProxy(props: Props) {
+  private _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props, {
@@ -194,6 +178,15 @@ class Block<Props extends Record<string, any> = any> {
       },
     });
   }
+
+	private _removeEvents() {
+		const { events = {} } = this.props as Props & {
+			events: Record<string, () => void>;
+		};
+
+		Object.keys(events).forEach((eventName) =>
+			this._element?.removeEventListener(eventName, events[eventName]));
+	}
 }
 
 export default Block;

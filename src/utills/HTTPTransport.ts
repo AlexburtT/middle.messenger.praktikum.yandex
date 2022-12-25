@@ -9,6 +9,7 @@ export enum Method {
 type RequestOptions = {
 	method: Method;
 	data?: any;
+	headers?: Record<string, string>;
 };
 
 export default class HTTPTransport {
@@ -84,7 +85,7 @@ export default class HTTPTransport {
 			if (isGet || !data) {
 				xhr.send();
 			} else {
-				xhr.send(JSON.stringify(data));
+				xhr.send(data instanceof FormData ? data : JSON.stringify(data));
 			}
 		});
 	}

@@ -24,8 +24,6 @@ export function onSubmit(e: any) {
 		inputValue[input.name] = input.value;
 	});
 
-	console.log(inputValue);
-
 	return inputValue;
 
 }

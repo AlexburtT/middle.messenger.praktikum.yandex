@@ -7,6 +7,8 @@ import { withStore } from '../../modules/hocsApi/withStore';
 import { Avatar } from '../../components/Avatar';
 import { IUser } from '../../modules/api/interfaces/UserData';
 import { Profile } from '../../components/Profile';
+import { Modal } from '../../components/Modal';
+import { Input } from '../../components/Input/input';
 
 interface SettingsProps extends IUser {}
 
@@ -35,8 +37,12 @@ class SettingsPageBase extends Block<SettingsProps> {
 			},
 		});
 		this.children.avatar = new Avatar({
-			src: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
-			alt: 'аватар',
+			srcImg: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
+			events: {
+				click: () => {
+					window['dialog'].showModal();
+				},
+			},
 		});
 
 		this.children.editProfile = new Button({
@@ -48,6 +54,15 @@ class SettingsPageBase extends Block<SettingsProps> {
 			label: 'Изменить пароль',
 			className: 'button_link',
 		});
+
+		this.children.modal = new Modal({
+			label: 'Изменить аватарку',
+			content: new Input({
+				type: 'file',
+				inputName: 'avatar',
+				className: 'input',
+			}),
+		});
 	}
 
 	protected componentDidUpdate(oldProps: SettingsProps, newProps: SettingsProps): boolean {
@@ -58,7 +73,7 @@ class SettingsPageBase extends Block<SettingsProps> {
 		});
 
 		(this.children.avatar as Avatar).setProps({
-			src: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
+			srcImg: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
 		});
 
 		return super.componentDidUpdate(oldProps, newProps);

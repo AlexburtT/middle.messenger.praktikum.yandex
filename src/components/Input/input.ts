@@ -7,13 +7,13 @@ interface InputProps {
 	type: string;
 	inputName: string;
 	placeholder?: string;
-	required: boolean;
+	required?: boolean;
 	autofocus?: boolean;
 	className: string;
 	minLength?: number;
 	maxLength?: number;
 	events?: any;
-	inputMode: string;
+	inputMode?: string;
 }
 
 export class Input extends Block {

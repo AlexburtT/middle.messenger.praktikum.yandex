@@ -3,8 +3,7 @@ import template from './avatar.hbs';
 import styles from './avatar.css';
 
 interface AvatarProps {
-	src: string,
-	alt: string,
+	srcImg?: string,
 	events?: {
 		click: (e: Event) => void;
 	}
