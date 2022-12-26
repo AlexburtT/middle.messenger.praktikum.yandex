@@ -1,7 +1,7 @@
 import BaseAPI from './BaseAPI';
-import { SigninData } from './interfaces/SigninData';
-import { SignupData } from './interfaces/SignupData';
-import { IUser } from './interfaces/UserData';
+import { SigninData } from './interfaces/interfaceAPI';
+import { SignupData } from './interfaces/interfaceAPI';
+import { IUser } from './interfaces/interfaceAPI';
 
 
 export class AuthAPI extends BaseAPI {

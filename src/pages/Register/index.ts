@@ -4,7 +4,7 @@ import { Input } from '../../components/Input/input';
 import template from './register.hbs';
 import { validate } from '../../utills/validations';
 import AuthController from '../../modules/controllers/AuthController';
-import { SignupData } from '../../modules/api/interfaces/SignupData';
+import { SignupData } from '../../modules/api/interfaces/interfaceAPI';
 import { onSubmit } from '../../utills/onSubmit';
 
 export class RegisterPage extends Block {

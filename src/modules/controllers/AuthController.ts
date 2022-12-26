@@ -1,33 +1,31 @@
-import { SignupData } from '../api/interfaces/SignupData';
-import { SigninData } from '../api/interfaces/SigninData';
-import API, { AuthAPI } from '../api/AuthAPI';
+import { SignupData, SigninData } from '../api/interfaces/interfaceAPI';
+import { AuthAPI } from '../api/AuthAPI';
 import store from '../../utills/Store';
 import Router from '../../utills/Router';
 
-export class AuthController {
-	private readonly api: AuthAPI;
-
-	constructor() {
-		this.api = API;
-	}
+class AuthController {
+	constructor(private api: AuthAPI) {}
 
 	async signup(data: SignupData) {
 		try {
 			await this.api.signup(data);
 			await this.fetchUser();
 			Router.go('/messenger');
-		} catch (e) {
-			store.set('user', e);
+		} catch (e: any) {
+			console.error(e.message);
+			store.set('user.error', e);
 		}
 	}
 
 	async signin(data: SigninData) {
 		try {
 			await this.api.signin(data);
-
+			await this.fetchUser(); //нужно ли оно тут?
+			store.set('user.error', undefined);
 			Router.go('/messenger');
-		} catch (e) {
-			store.set('userr', e);
+		} catch (e: any) {
+			console.error(e);
+			store.set('user.error', e);
 		}
 
 	}
@@ -36,8 +34,9 @@ export class AuthController {
 		try {
 			await this.api.logout();
 			Router.go('/');
-		} catch (e) {
-			store.set('user', e);
+		} catch (e: any) {
+			console.error(e.message);
+			store.set('user.error', e);
 		}
 	}
 
@@ -49,4 +48,4 @@ export class AuthController {
 	}
 }
 
-export default new AuthController();
+export default new AuthController(new AuthAPI());

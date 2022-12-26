@@ -1,17 +1,25 @@
 import BaseAPI from './BaseAPI';
-import { IUser } from './interfaces/UserData';
-import { IPassword } from './interfaces/PasswordData';
+import {
+	IUserInfo,
+	ChangePassword,
+	UserUpdateRequest,
+} from './interfaces/interfaceAPI';
+
 
 export class UserAPI extends BaseAPI {
 	constructor() {
 		super('/user');
 	}
 
-	updateUser(data: IUser) {
+	getUser(id: number): Promise<Array<IUserInfo & { role: string }>> {
+		return this.http.get(`/${id}`);
+	}
+
+	updateUser(data: UserUpdateRequest) {
 		return this.http.put('/profile', data);
 	}
 
-	updatePassword(data: IPassword) {
+	updatePassword(data: ChangePassword) {
 		return this.http.put('/password', data);
 	}
 

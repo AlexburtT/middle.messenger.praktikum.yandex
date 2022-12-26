@@ -5,13 +5,13 @@ import { Button } from '../../components/Button';
 import AuthController from '../../modules/controllers/AuthController';
 import { withStore } from '../../modules/hocsApi/withStore';
 import { Avatar } from '../../components/Avatar';
-import { IUser } from '../../modules/api/interfaces/UserData';
+import { IUserInfo } from '../../modules/api/interfaces/interfaceAPI';
 import { Profile } from '../../components/Profile';
 import { Modal } from '../../components/Modal';
 import { Input } from '../../components/Input/input';
 import UserController from '../../modules/controllers/UserController';
 
-interface SettingsProps extends IUser {}
+interface SettingsProps extends IUserInfo {}
 
 const userFields = ['first_name', 'second_name', 'display_name', 'login',
 	'email', 'phone'] as Array<keyof SettingsProps>;
@@ -66,14 +66,14 @@ class SettingsPageBase extends Block<SettingsProps> {
 			}),
 			events: {
 				close: () => {
-					const input: any = document.querySelector('input');
-					console.log(input);
+					const input: any = document.querySelector('.input');
+					const file = Object(input)!.files[0];
 					const formData = new FormData();
-					formData.append('input', input?.files[0]);
 
-					console.log(formData);
-					UserController.updateAvatar(formData);
-
+					formData.append('avatar', file);
+					if (formData) {
+						UserController.updateAvatar(formData);
+					}
 				},
 			},
 		});

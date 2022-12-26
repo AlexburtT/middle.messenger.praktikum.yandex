@@ -9,7 +9,7 @@ import styles from './login.css';
 import { validate } from '../../utills/validations';
 import { onSubmit } from '../../utills/onSubmit';
 import AuthController from '../../modules/controllers/AuthController';
-import { SigninData } from '../../modules/api/interfaces/SigninData';
+import { SigninData } from '../../modules/api/interfaces/interfaceAPI';
 
 export class LoginPage extends Block {
 	constructor() {

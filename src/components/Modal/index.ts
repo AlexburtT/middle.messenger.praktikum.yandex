@@ -10,7 +10,7 @@ interface ModalProps {
 	events?: {
 		close: () => void;
 	};
-	}
+}
 
 export class Modal extends Block<ModalProps> {
 	constructor(props: ModalProps) {
