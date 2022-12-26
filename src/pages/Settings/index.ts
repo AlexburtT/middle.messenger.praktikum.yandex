@@ -9,6 +9,7 @@ import { IUser } from '../../modules/api/interfaces/UserData';
 import { Profile } from '../../components/Profile';
 import { Modal } from '../../components/Modal';
 import { Input } from '../../components/Input/input';
+import UserController from '../../modules/controllers/UserController';
 
 interface SettingsProps extends IUser {}
 
@@ -40,7 +41,8 @@ class SettingsPageBase extends Block<SettingsProps> {
 			srcImg: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
 			events: {
 				click: () => {
-					window['dialog'].showModal();
+					const dialog = document.querySelector('dialog');
+					dialog!.showModal();
 				},
 			},
 		});
@@ -56,12 +58,24 @@ class SettingsPageBase extends Block<SettingsProps> {
 		});
 
 		this.children.modal = new Modal({
-			label: 'Изменить аватарку',
+			label: 'аватарку',
 			content: new Input({
 				type: 'file',
 				inputName: 'avatar',
 				className: 'input',
 			}),
+			events: {
+				close: () => {
+					const input: any = document.querySelector('input');
+					console.log(input);
+					const formData = new FormData();
+					formData.append('input', input?.files[0]);
+
+					console.log(formData);
+					UserController.updateAvatar(formData);
+
+				},
+			},
 		});
 	}
 
